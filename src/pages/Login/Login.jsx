@@ -60,10 +60,8 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const result = await loginAuth(data.email, data.password);
-      localStorage.setItem("token", result.token);
       updateUser(result);
       navigate("/");
-      window.location.reload();
     } catch (error) {}
   };
   return (
