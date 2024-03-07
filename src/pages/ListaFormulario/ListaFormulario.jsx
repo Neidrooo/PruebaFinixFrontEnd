@@ -23,7 +23,7 @@ const ContainerListaFormulario = styled.div`
   justify-content: center;
 
   .contenedor-lista-formulario {
-    width: 60%;
+    width: 70%;
   }
 `;
 
@@ -35,11 +35,17 @@ const ListaFormulario = () => {
   const [pageCount, setPageCount] = useState(0);
   const [pageSize] = useState(10);
   const [isLoading, setIsLoading] = useState(true);
-
+  const token = localStorage.getItem("token");
   useEffect(() => {
+    //
     const loadBanks = async () => {
       try {
-        const banksData = await fetchBanks(currentPage, pageSize, searchUid);
+        const banksData = await fetchBanks(
+          currentPage,
+          pageSize,
+          searchUid,
+          token
+        );
         setBanks(banksData);
         setPageCount(banksData.pageCount);
       } catch (error) {
@@ -50,7 +56,7 @@ const ListaFormulario = () => {
     };
 
     loadBanks();
-  }, [currentPage, pageSize, searchUid]);
+  }, [currentPage, pageSize, searchUid, token]);
 
   const handleDeleteBank = async (uid) => {
     try {

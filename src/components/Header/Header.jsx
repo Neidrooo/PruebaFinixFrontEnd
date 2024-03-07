@@ -5,6 +5,7 @@ import iconoProfile from "../../assets/img/iconoProfile.svg";
 import ModalPerfil from "../StyledComponents/ModalPerfil";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "../../context/UserContext";
+import Tooltip from "../StyledComponents/Tooltip";
 const ContainerHeader = styled.header`
   width: 100%;
   height: 70px;
@@ -77,8 +78,12 @@ const Header = () => {
             style={{ cursor: "pointer" }}
           />
           <div className="contenedor-navegacion">
-            <IconoSalir onClick={handleLogout} />
-            <IconoPerfil onClick={() => setShowModal(true)} />
+            <Tooltip text="Cerrar sesión">
+              <IconoSalir onClick={handleLogout} />
+            </Tooltip>
+            <Tooltip text="Ver perfil">
+              <IconoPerfil onClick={() => setShowModal(true)} />
+            </Tooltip>
           </div>
         </div>
       </ContainerHeader>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import iconoEditar from "../../assets/img/iconoEditar.svg";
-
+import Tooltip from "./Tooltip";
 const IconoEditar = styled.div`
   width: 24px;
   height: 24px;
@@ -17,7 +17,11 @@ const IconoEditar = styled.div`
 `;
 
 const EditButton = ({ uid, onEditClicked }) => {
-  return <IconoEditar onClick={() => onEditClicked(uid)} />;
+  return (
+    <Tooltip text="Editar">
+      <IconoEditar onClick={() => onEditClicked(uid)} />
+    </Tooltip>
+  );
 };
 
 export default EditButton;

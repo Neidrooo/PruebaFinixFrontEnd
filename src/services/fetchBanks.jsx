@@ -1,12 +1,17 @@
 const BASE_URL = import.meta.env.VITE_API_BASE_URL;
-const token = localStorage.getItem("token");
-
+let token = localStorage.getItem("token");
 const headers = {
   "Content-Type": "application/json",
   Authorization: `Bearer ${token}`,
 };
 
-export const fetchBanks = async (pageIndex = 1, pageSize = 10, uid = "") => {
+export const fetchBanks = async (
+  pageIndex = 1,
+  pageSize = 10,
+  uid = "",
+  tokenn = ""
+) => {
+  headers.Authorization = `Bearer ${tokenn}`;
   const url =
     `${BASE_URL}/Banks?pageIndex=${pageIndex}&pageSize=${pageSize}` +
     (uid ? `&Uid=${uid}` : "");

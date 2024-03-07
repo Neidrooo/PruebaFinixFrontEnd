@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import iconoBorrar from "../../assets/img/iconoBorrar.svg";
+import Tooltip from "./Tooltip";
 const IconoEliminar = styled.div`
   width: 24px;
   height: 24px;
@@ -35,7 +36,11 @@ const DeleteConfirmationAlert = ({ uid, onDeleteConfirmed }) => {
     });
   };
 
-  return <IconoEliminar onClick={showConfirmationAlert} />;
+  return (
+    <Tooltip text="Eliminar">
+      <IconoEliminar onClick={showConfirmationAlert} />
+    </Tooltip>
+  );
 };
 
 export default DeleteConfirmationAlert;

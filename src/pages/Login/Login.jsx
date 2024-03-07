@@ -60,9 +60,16 @@ const Login = () => {
   const onSubmit = async (data) => {
     try {
       const result = await loginAuth(data.email, data.password);
+      console.log(result);
       updateUser(result);
       navigate("/");
-    } catch (error) {}
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Usuario o contraseña incorrectos",
+      });
+    }
   };
   return (
     <ContainerLogin>
